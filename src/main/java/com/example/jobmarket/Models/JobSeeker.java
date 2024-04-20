@@ -19,13 +19,15 @@ import java.util.Collection;
 public class JobSeeker implements UserDetails , Principal {
     @Id
     @GeneratedValue
-    Integer id;
+    private Integer id;
+    private String firstName;
+    private String lastName;
 
-    String email;
+    private String email;
 
-    String password;
+    private String password;
 
-    String resume;
+    private String resume;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -64,6 +66,6 @@ public class JobSeeker implements UserDetails , Principal {
 
     @Override
     public String getName() {
-        return getUsername();
+        return firstName+" "+lastName;
     }
 }

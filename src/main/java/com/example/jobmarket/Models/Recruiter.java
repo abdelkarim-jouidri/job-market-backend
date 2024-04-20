@@ -1,5 +1,6 @@
 package com.example.jobmarket.Models;
 
+import com.example.jobmarket.Enums.Role;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -10,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.security.Principal;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -21,21 +23,22 @@ public class Recruiter implements UserDetails, Principal {
 
     @Id
     @GeneratedValue
-    Integer id;
-    String firstName;
-    String lastName;
-    String Password;
+    private Integer id;
+    private String Password;
+    private Set<Role> roles;
+
 
     @OneToOne
     private Company company;
 
     @Override
     public String getName() {
-        return firstName+" "+lastName;
+        return company.getName();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        //to be added later
         return null;
     }
 
