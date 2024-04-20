@@ -7,11 +7,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.security.Principal;
 import java.util.Collection;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Getter
@@ -38,8 +40,11 @@ public class Recruiter implements UserDetails, Principal {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        //to be added later
-        return null;
+
+        return roles.
+                stream().
+                map(r-> new SimpleGrantedAuthority(r.name())).
+                collect(Collectors.toList());
     }
 
     @Override
