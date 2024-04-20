@@ -6,7 +6,6 @@ import jakarta.persistence.Id;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.security.Principal;
 import java.util.Collection;
@@ -17,7 +16,7 @@ import java.util.Collection;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class User implements UserDetails , Principal {
+public class JobSeeker implements UserDetails , Principal {
     @Id
     @GeneratedValue
     Integer id;
@@ -26,6 +25,8 @@ public class User implements UserDetails , Principal {
 
     String password;
 
+    String resume;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -33,7 +34,7 @@ public class User implements UserDetails , Principal {
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
@@ -43,26 +44,26 @@ public class User implements UserDetails , Principal {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     @Override
     public String getName() {
-        return null;
+        return getUsername();
     }
 }
