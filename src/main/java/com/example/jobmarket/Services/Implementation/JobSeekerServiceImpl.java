@@ -10,17 +10,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class JobSeekerServiceImpl implements JobSeekerService , UserDetailsService {
+public class JobSeekerServiceImpl implements JobSeekerService  {
     private final JobSeekerRepository jobSeekerRepository;
     @Override
     public void register() {
 
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return jobSeekerRepository.
-                findByEmail(username).
-                orElseThrow();
-    }
+
 }
