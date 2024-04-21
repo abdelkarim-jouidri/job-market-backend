@@ -27,6 +27,7 @@ public class Recruiter implements UserDetails, Principal {
     @GeneratedValue
     private Integer id;
     private String Password;
+    private String Email;
     private Set<Role> roles;
 
 
