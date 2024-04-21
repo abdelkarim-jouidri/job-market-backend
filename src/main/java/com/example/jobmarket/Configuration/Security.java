@@ -1,5 +1,6 @@
 package com.example.jobmarket.Configuration;
 
+import com.example.jobmarket.Filters.JwtFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,9 +31,7 @@ public class Security {
                 sessionManagement(session->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).
                 authenticationProvider(authenticationProvider).
-                addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class).
-
-
-
+                addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+        return httpSecurity.build();
     }
 }
