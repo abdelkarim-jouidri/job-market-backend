@@ -22,7 +22,6 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JwtFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
-    @Qualifier("userDetailsServiceImpl")
     private final UserDetailsService userDetailsService;
 
     @Override

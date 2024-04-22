@@ -1,10 +1,7 @@
 package com.example.jobmarket.Models;
 
 import com.example.jobmarket.Enums.Role;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,7 +24,8 @@ public class Recruiter implements UserDetails, Principal {
     @GeneratedValue
     private Integer id;
     private String Password;
-    private String Email;
+    @Column(unique = true)
+    private String email;
     private Set<Role> roles;
 
 
