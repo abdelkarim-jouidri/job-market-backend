@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class Recruiter implements UserDetails, Principal {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String Password;
     @Column(unique = true)

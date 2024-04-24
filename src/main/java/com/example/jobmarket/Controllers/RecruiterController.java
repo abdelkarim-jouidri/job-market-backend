@@ -16,7 +16,7 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping("/api/recruiter/")
 @RequiredArgsConstructor
 public class RecruiterController {
-    private RecruiterService recruiterService;
+    private final RecruiterService recruiterService;
 
     @GetMapping("/auth/test")
     public String test(){
