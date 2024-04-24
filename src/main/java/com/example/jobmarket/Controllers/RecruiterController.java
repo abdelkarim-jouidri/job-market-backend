@@ -9,22 +9,27 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-@Controller
+@RestController
 @RequestMapping("/api/recruiter/")
 @RequiredArgsConstructor
 public class RecruiterController {
     private RecruiterService recruiterService;
 
+    @GetMapping("/auth/test")
+    public String test(){
+        return "test works";
+    }
+
     @PostMapping("/auth/register")
-    public ResponseEntity<?> register(RecruiterRegisterRequest request){
+    public ResponseEntity<?> register(@RequestBody @Valid RecruiterRegisterRequest request){
         recruiterService.register(request);
         return ResponseEntity.accepted().build();
     }
+
+
 
     @PostMapping("/auth/login")
     public ResponseEntity<AuthenticationResponse> login(@RequestBody @Valid LoginRequest request) {
