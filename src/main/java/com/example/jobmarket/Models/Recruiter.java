@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.security.Principal;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -26,7 +28,8 @@ public class Recruiter implements UserDetails, Principal {
     private String Password;
     @Column(unique = true)
     private String email;
-    private Set<Role> roles;
+
+    private Role role = Role.RECRUTER;
 
 
     @OneToOne
@@ -40,7 +43,7 @@ public class Recruiter implements UserDetails, Principal {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
-        return roles.
+        return List.of(Role.RECRUTER).
                 stream().
                 map(r-> new SimpleGrantedAuthority(r.name())).
                 collect(Collectors.toList());
@@ -48,12 +51,12 @@ public class Recruiter implements UserDetails, Principal {
 
     @Override
     public String getPassword() {
-        return getPassword();
+        return this.Password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return this.email;
     }
 
     @Override

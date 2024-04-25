@@ -34,6 +34,7 @@ public class RecruiterController {
     @PostMapping("/auth/login")
     public ResponseEntity<AuthenticationResponse> login(@RequestBody @Valid LoginRequest request) {
         try {
+            System.out.println(request.toString());
             AuthenticationResponse authenticationResponse = recruiterService.authenticate(request);
             return ResponseEntity.ok(authenticationResponse);
         }catch (ResponseStatusException e){

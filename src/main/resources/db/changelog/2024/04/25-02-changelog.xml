@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1714078542960-1" author="hp (generated)">
+        <addColumn tableName="recruiter">
+            <column name="role" type="SMALLINT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1714078542960-2" author="hp (generated)">
+        <dropColumn columnName="roles" tableName="recruiter"/>
+    </changeSet>
+
+</databaseChangeLog>

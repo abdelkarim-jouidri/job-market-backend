@@ -28,8 +28,8 @@ public class RecruiterServiceImpl implements RecruiterService  {
         Recruiter entity = Recruiter.
                 builder().
                 email(request.getEmail()).
-                Password(encoder.encode(request.getPassword())).build();
-        System.out.println(entity);
+                Password(encoder.encode(request.getPassword())).
+                build();
         recruiterRepository.save(entity);
 
     }
