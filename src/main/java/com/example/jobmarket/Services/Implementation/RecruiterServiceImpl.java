@@ -3,6 +3,7 @@ package com.example.jobmarket.Services.Implementation;
 import com.example.jobmarket.DTOs.Requests.LoginRequest;
 import com.example.jobmarket.DTOs.Requests.RecruiterRegisterRequest;
 import com.example.jobmarket.DTOs.Response.AuthenticationResponse;
+import com.example.jobmarket.Enums.Role;
 import com.example.jobmarket.Models.Recruiter;
 import com.example.jobmarket.Respositories.RecruiterRepository;
 import com.example.jobmarket.Services.JwtService;
@@ -29,6 +30,7 @@ public class RecruiterServiceImpl implements RecruiterService  {
                 builder().
                 email(request.getEmail()).
                 Password(encoder.encode(request.getPassword())).
+                role(Role.RECRUTER).
                 build();
         recruiterRepository.save(entity);
 

@@ -37,13 +37,13 @@ public class Recruiter implements UserDetails, Principal {
 
     @Override
     public String getName() {
-        return company.getName();
+        return this.company == null ? "company not linked yet" : company.getName();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
-        return List.of(Role.RECRUTER).
+        return List.of(this.role).
                 stream().
                 map(r-> new SimpleGrantedAuthority(r.name())).
                 collect(Collectors.toList());
