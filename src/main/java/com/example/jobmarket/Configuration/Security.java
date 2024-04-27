@@ -26,7 +26,9 @@ public class Security {
                 csrf(AbstractHttpConfigurer::disable).
                 authorizeHttpRequests(req->
                         req.requestMatchers(
-                                "/api/recruiter/auth/**"
+                                "/api/recruiter/auth/**",
+                                "/api/jobseeker/auth/**"
+
                         ).permitAll().anyRequest().authenticated()).
                 sessionManagement(session->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).
