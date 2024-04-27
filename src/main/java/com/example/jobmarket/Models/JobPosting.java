@@ -12,8 +12,8 @@ public class JobPosting {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String description;
-//    @ManyToOne
-//    private Recruiter PostedBy;
+    @ManyToOne
+    private Recruiter PostedBy;
     @OneToMany
     private Set<JobApplication> applications;
 }
