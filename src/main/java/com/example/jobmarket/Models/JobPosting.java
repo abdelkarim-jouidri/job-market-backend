@@ -9,7 +9,7 @@ import java.util.Set;
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 @Builder
 public class JobPosting {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String description;
 //    @ManyToOne

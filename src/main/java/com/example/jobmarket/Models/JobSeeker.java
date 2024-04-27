@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.security.Principal;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -31,12 +32,12 @@ public class JobSeeker implements UserDetails , Principal {
 
     private String resume;
 
-    private Set<Role> roles;
+    private Role role = Role.RECRUTER;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
-        return roles.
+        return List.of(this.role).
                 stream().
                 map(r-> new SimpleGrantedAuthority(r.name())).
                 collect(Collectors.toList());

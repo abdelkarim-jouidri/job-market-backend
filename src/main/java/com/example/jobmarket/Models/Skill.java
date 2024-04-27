@@ -2,6 +2,7 @@ package com.example.jobmarket.Models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
@@ -9,7 +10,7 @@ import lombok.*;
 @Setter @Getter @NoArgsConstructor @AllArgsConstructor
 @Builder
 public class Skill {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
 }
