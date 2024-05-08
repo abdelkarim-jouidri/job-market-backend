@@ -1,7 +1,10 @@
 package com.example.jobmarket.Configuration;
 
+import com.example.jobmarket.Enums.Role;
 import com.example.jobmarket.Filters.JwtFilter;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -29,7 +32,9 @@ public class Security {
                                 "/api/recruiter/auth/**",
                                 "/api/jobseeker/auth/**"
 
-                        ).permitAll().anyRequest().authenticated()).
+                        ).permitAll().
+                                anyRequest().authenticated()
+                                ).
                 sessionManagement(session->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).
                 authenticationProvider(authenticationProvider).

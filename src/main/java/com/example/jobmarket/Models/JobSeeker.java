@@ -32,7 +32,7 @@ public class JobSeeker implements UserDetails , Principal {
 
     private String resume;
 
-    private Role role = Role.RECRUTER;
+    private Role role = Role.JOBSEEKER;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -50,7 +50,7 @@ public class JobSeeker implements UserDetails , Principal {
 
     @Override
     public String getUsername() {
-        return null;
+        return email;
     }
 
     @Override

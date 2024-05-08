@@ -39,12 +39,10 @@ public class RecruiterController {
             AuthenticationResponse authenticationResponse = recruiterService.authenticate(request);
             return ResponseEntity.ok(authenticationResponse);
         }catch (ResponseStatusException e){
-            throw e;
-//            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }catch (AuthenticationException e){
-//            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED, "Invalid credentials")
-            System.out.println("something went wrong");
-            throw e;
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+
         }
     }
 
