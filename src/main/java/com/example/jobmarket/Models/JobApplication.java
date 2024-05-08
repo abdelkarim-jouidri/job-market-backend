@@ -13,6 +13,7 @@ public class JobApplication {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private LocalDate dateOfApplication;
+    private String cv;
     @ManyToOne
     private JobSeeker applicant;
     @OneToOne

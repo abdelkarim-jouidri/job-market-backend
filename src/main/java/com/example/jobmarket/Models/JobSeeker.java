@@ -30,7 +30,7 @@ public class JobSeeker implements UserDetails , Principal {
 
     private String password;
 
-    private String resume;
+//    private String resume;
 
     private Role role = Role.JOBSEEKER;
 
