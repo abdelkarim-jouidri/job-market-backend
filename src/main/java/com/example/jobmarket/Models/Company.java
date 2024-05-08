@@ -13,4 +13,7 @@ public class Company {
     private String name;
     private String location;
 
+    @OneToOne
+    private Recruiter recruiter;
+
 }

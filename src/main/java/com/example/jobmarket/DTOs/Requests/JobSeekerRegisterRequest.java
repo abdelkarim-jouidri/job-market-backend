@@ -6,15 +6,14 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 @Builder
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class JobSeekerRegisterRequest {
 
     @NotEmpty(message = "First name is required")
     @NotBlank(message = "First name cannot be blank")
-    private String firstName;
+    private String firstname;
     @NotEmpty(message = "Last name is required")
     @NotBlank(message = "Last name cannot be blank")
     private String lastname;

@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -20,7 +21,7 @@ public class JobSeekerController {
     private final JobSeekerService jobSeekerService;
 
     @PostMapping("/auth/register")
-    public ResponseEntity<String> register(@RequestBody @Valid JobSeekerRegisterRequest request) {
+    public ResponseEntity<String> register(@RequestBody  JobSeekerRegisterRequest request) {
         jobSeekerService.register(request);
         return ResponseEntity.status(HttpStatus.CREATED).body("Registration successful");
     }
@@ -30,10 +31,15 @@ public class JobSeekerController {
     @PostMapping("/auth/login")
     public ResponseEntity<AuthenticationResponse> login(@RequestBody @Valid LoginRequest request) {
         try {
+            System.out.println("inside the login method");
             AuthenticationResponse authenticationResponse = jobSeekerService.authenticate(request);
             return ResponseEntity.ok(authenticationResponse);
         }catch (ResponseStatusException e){
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }catch (AuthenticationException e){
+             e.printStackTrace();
+             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
         }
     }
 

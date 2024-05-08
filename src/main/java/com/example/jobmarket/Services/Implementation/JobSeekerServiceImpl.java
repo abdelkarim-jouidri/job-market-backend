@@ -4,6 +4,7 @@ import com.example.jobmarket.DTOs.Requests.JobSeekerRegisterRequest;
 import com.example.jobmarket.DTOs.Requests.LoginRequest;
 import com.example.jobmarket.DTOs.Requests.RecruiterRegisterRequest;
 import com.example.jobmarket.DTOs.Response.AuthenticationResponse;
+import com.example.jobmarket.Enums.Role;
 import com.example.jobmarket.Models.JobSeeker;
 import com.example.jobmarket.Models.Recruiter;
 import com.example.jobmarket.Respositories.JobSeekerRepository;
@@ -31,8 +32,9 @@ public class JobSeekerServiceImpl implements JobSeekerService  {
         JobSeeker entity = JobSeeker.
                 builder().
                 email(request.getEmail()).
-                firstName(request.getFirstName()).
+                firstName(request.getFirstname()).
                 lastName(request.getLastname()).
+                role(Role.JOBSEEKER).
                 password(encoder.encode(request.getPassword())).
                 build();
         jobSeekerRepository.save(entity);
