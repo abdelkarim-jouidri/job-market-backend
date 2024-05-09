@@ -23,4 +23,11 @@ public class JobPosting {
     private Recruiter PostedBy;
     @OneToMany
     private Set<JobApplication> applications;
+    @ManyToMany
+    @JoinTable(
+            name = "job_posting_skill",
+            joinColumns = @JoinColumn(name = "job_posting_id"),
+            inverseJoinColumns = @JoinColumn(name = "skill_id")
+    )
+    private Set<Skill> skills;
 }
