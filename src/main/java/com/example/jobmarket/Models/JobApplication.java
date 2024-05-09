@@ -16,6 +16,6 @@ public class JobApplication {
     private String cv;
     @ManyToOne
     private JobSeeker applicant;
-    @OneToOne
+    @ManyToOne
     private JobPosting jobPosting;
 }

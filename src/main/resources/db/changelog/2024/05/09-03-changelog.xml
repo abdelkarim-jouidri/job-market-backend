@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1715215374783-1" author="hp (generated)">
+        <createTable tableName="job_posting_applications">
+            <column name="job_posting_id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_jobposting_applications"/>
+            </column>
+            <column name="applications_id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_jobposting_applications"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1715215374783-2" author="hp (generated)">
+        <createTable tableName="job_posting_skill">
+            <column name="job_posting_id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_job_posting_skill"/>
+            </column>
+            <column name="skill_id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_job_posting_skill"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1715215374783-3" author="hp (generated)">
+        <addColumn tableName="job_application">
+            <column name="job_posting_id" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1715215374783-4" author="hp (generated)">
+        <addUniqueConstraint columnNames="applications_id" constraintName="uc_job_posting_applications_applications"
+                             tableName="job_posting_applications"/>
+    </changeSet>
+    <changeSet id="1715215374783-5" author="hp (generated)">
+        <addForeignKeyConstraint baseColumnNames="job_posting_id" baseTableName="job_application"
+                                 constraintName="FK_JOBAPPLICATION_ON_JOBPOSTING" referencedColumnNames="id"
+                                 referencedTableName="job_posting"/>
+    </changeSet>
+    <changeSet id="1715215374783-6" author="hp (generated)">
+        <addForeignKeyConstraint baseColumnNames="applications_id" baseTableName="job_posting_applications"
+                                 constraintName="fk_jobposapp_on_job_application" referencedColumnNames="id"
+                                 referencedTableName="job_application"/>
+    </changeSet>
+    <changeSet id="1715215374783-7" author="hp (generated)">
+        <addForeignKeyConstraint baseColumnNames="job_posting_id" baseTableName="job_posting_applications"
+                                 constraintName="fk_jobposapp_on_job_posting" referencedColumnNames="id"
+                                 referencedTableName="job_posting"/>
+    </changeSet>
+    <changeSet id="1715215374783-8" author="hp (generated)">
+        <addForeignKeyConstraint baseColumnNames="job_posting_id" baseTableName="job_posting_skill"
+                                 constraintName="fk_jobposski_on_job_posting" referencedColumnNames="id"
+                                 referencedTableName="job_posting"/>
+    </changeSet>
+    <changeSet id="1715215374783-9" author="hp (generated)">
+        <addForeignKeyConstraint baseColumnNames="skill_id" baseTableName="job_posting_skill"
+                                 constraintName="fk_jobposski_on_skill" referencedColumnNames="id"
+                                 referencedTableName="skill"/>
+    </changeSet>
+
+</databaseChangeLog>

@@ -3,7 +3,7 @@ package com.example.jobmarket.DTOs.JobPosting;
 import lombok.*;
 
 @Builder
-@AllArgsConstructor @NoArgsConstructor
+//@AllArgsConstructor @NoArgsConstructor
 @Getter @Setter
 public class JobPostingReadDTO {
 }

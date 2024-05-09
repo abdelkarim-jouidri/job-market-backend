@@ -10,7 +10,7 @@ import lombok.*;
 @Setter @Getter @NoArgsConstructor @AllArgsConstructor
 @Builder
 public class Skill {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
 }
