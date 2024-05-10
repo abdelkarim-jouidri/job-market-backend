@@ -53,7 +53,7 @@ class JobSeekerServiceImplTest {
                 email("jobseeker1@gmail.com").
                 password("123").
                 lastname("Doe").
-                firstName("mike").
+                firstname("mike").
                 build();
 //            Mock the dependecies
         String rawPassword = "123";

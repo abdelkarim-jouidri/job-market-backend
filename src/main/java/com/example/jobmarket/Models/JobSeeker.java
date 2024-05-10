@@ -31,6 +31,7 @@ public class JobSeeker implements UserDetails , Principal {
     private String password;
 
 //    private String resume;
+    @Enumerated(EnumType.STRING)
 
     private Role role = Role.JOBSEEKER;
 
