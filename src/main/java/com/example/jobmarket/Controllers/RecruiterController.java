@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -34,8 +35,10 @@ public class RecruiterController {
 
     @PostMapping("/auth/register")
     public ResponseEntity<?> register(@RequestBody @Valid RecruiterRegisterRequest request){
-        recruiterService.register(request);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Registration successful");
+            recruiterService.register(request);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Registration successful");
+
+
     }
 
 
