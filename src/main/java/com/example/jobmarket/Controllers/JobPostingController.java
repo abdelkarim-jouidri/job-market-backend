@@ -25,7 +25,7 @@ public class JobPostingController {
         return ResponseEntity.ok(pageableJobPostings);
     }
 
-    @PreAuthorize("hasAnyAuthority('RECRU')")
+    @PreAuthorize("hasAuthority('RECRUTER')")
     @PostMapping
     public ResponseEntity<JobPostingReadDTO> addJobPosting(
             @Valid @RequestBody JobPostingCreateDTO jobPostingDTO

@@ -22,6 +22,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class Security {
     private final AuthenticationProvider authenticationProvider;
     private final JwtFilter jwtFilter;
+    private final String[] AUTHORIZED_URLS = {
+            "/api/recruiter/auth/**",
+            "/api/jobseeker/auth/**",
+            "api/jobs/all"
+    };
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.
@@ -29,9 +34,7 @@ public class Security {
                 csrf(AbstractHttpConfigurer::disable).
                 authorizeHttpRequests(req->
                         req.requestMatchers(
-                                "/api/recruiter/auth/**",
-                                "/api/jobseeker/auth/**"
-
+                                AUTHORIZED_URLS
                         ).permitAll().
                                 anyRequest().authenticated()
                                 ).
