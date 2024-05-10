@@ -37,7 +37,7 @@ public class Recruiter implements UserDetails, Principal {
 
     @Override
     public String getName() {
-        return this.company == null ? "company not linked yet" : company.getName();
+        return this.company == null ? "UNKNOWN" : company.getName();
     }
 
     @Override

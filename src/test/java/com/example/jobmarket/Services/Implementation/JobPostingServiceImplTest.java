@@ -6,7 +6,9 @@ import com.example.jobmarket.Enums.ContractType;
 
 import com.example.jobmarket.Models.JobPosting;
 import com.example.jobmarket.Models.Recruiter;
+import com.example.jobmarket.Models.Skill;
 import com.example.jobmarket.Respositories.JobPostingRepository;
+import com.example.jobmarket.Respositories.SkillRepository;
 import com.example.jobmarket.Services.JobPostingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,6 +22,7 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.Set;
 
 import static org.hamcrest.Matchers.any;
@@ -34,6 +37,8 @@ public class JobPostingServiceImplTest {
 
     @Mock
     private ModelMapper modelMapper;
+    @Mock
+    private SkillRepository skillRepository;
 
     @InjectMocks
     private JobPostingServiceImpl jobPostingService;
@@ -72,6 +77,15 @@ public class JobPostingServiceImplTest {
         JobPostingReadDTO expectedReadDTO = new JobPostingReadDTO();
         when(modelMapper.map(Mockito.<JobPosting>any(), eq(JobPostingReadDTO.class)))
                 .thenReturn(expectedReadDTO);
+
+        // Mocking  the SkillRepository to return the skills reauired
+        Skill skill1 = new Skill();
+        skill1.setId(1);
+        skill1.setName("Laravel");
+        when(skillRepository.findById(anyInt())).thenReturn(Optional.of(skill1));
+
+        // Mock saving the JobPosting
+        when(jobPostingRepository.save(jobPosting)).thenReturn(jobPosting);
 
         // When
         JobPostingReadDTO result = jobPostingService.addJobPosting(jobPostingCreateDTO);
