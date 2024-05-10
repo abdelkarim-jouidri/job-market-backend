@@ -25,7 +25,9 @@ public class Security {
     private final String[] AUTHORIZED_URLS = {
             "/api/recruiter/auth/**",
             "/api/jobseeker/auth/**",
-            "api/jobs/all"
+            "api/jobs/all",
+            "api/skills/all"
+
     };
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
